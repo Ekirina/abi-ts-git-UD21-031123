@@ -16,6 +16,14 @@ class GeometriaTest {
 	Geometria figura = new Geometria(1);
 	double area = 0.0;
 	Geometria defaultfigura = new Geometria();
+	
+	@Test
+	public void testApp() {
+		calcular = new Geometria();
+		area = calcular.getArea();
+		calcular.setArea(area);		
+		System.out.println(calcular);
+	}
 
 	@BeforeEach
 	public void object() {
@@ -41,14 +49,7 @@ class GeometriaTest {
 		calcular = new Geometria(7);
 		calcular = new Geometria(8);
 		calcular = new Geometria();
-
 	}
-
-	/*@AfterEach
-	public void after() {
-		System.out.println("after()");
-		calcular.clear();
-	}*/
 
 	@Test
 	public void testAreaCuadrado() {
@@ -129,7 +130,7 @@ class GeometriaTest {
 	}
 	@AfterAll
 	public static void testToString() {
-        String esperado = "Geometria [id=1, nom=cuadrado, area=0.0]";
+        String esperado = "Geometria [id=9, nom=Default, area=0.0]";
         assertEquals(esperado, calcular.toString());
 	}
 	
