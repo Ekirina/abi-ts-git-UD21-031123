@@ -10,25 +10,38 @@ import org.junit.jupiter.api.Test;
 
 import JUnit.Junit09_Geometria.dto.Geometria;
 
-
 class GeometriaTest {
 
-	Geometria calcular = new Geometria();
+	static Geometria calcular = new Geometria();
+	Geometria figura = new Geometria(1);
+	double area = 0.0;
+	Geometria defaultfigura = new Geometria();
 
-	@BeforeAll
-	public static void testBeforeClass(){
-		System.out.println("beforeClass");
+	@BeforeEach
+	public void object() {
+		 calcular = new Geometria();
 	}
-
-	@AfterAll
-	public static void AfterClass() {
-		System.out.println("afterClass");
-	}
+	
+	@Test
+	public void testDefault(){
+		assertEquals(9, defaultfigura.getId());
+        assertEquals("Default", defaultfigura.getNom());
+        assertEquals(0.0, defaultfigura.getArea());
+		}
 
 	@BeforeEach
 	public void before() {
 		System.out.println("before()");
-		Geometria calcular = new Geometria();
+		calcular = new Geometria(1);
+		calcular = new Geometria(2);
+		calcular = new Geometria(3);
+		calcular = new Geometria(4);
+		calcular = new Geometria(5);
+		calcular = new Geometria(6);
+		calcular = new Geometria(7);
+		calcular = new Geometria(8);
+		calcular = new Geometria();
+
 	}
 
 	/*@AfterEach
@@ -86,11 +99,38 @@ class GeometriaTest {
 		double esperado = 40;
 		assertEquals(esperado, resultado);
 	}
+	@Test
+	public void getId() {
+		assertEquals(1, figura.getId());
+	}
+	@Test
+	public void setId() {
+		figura.setId(1);
+		assertEquals(1, figura.getId());
+	}
+	@Test
+	public void getNom() {
+		assertEquals("cuadrado", figura.getNom());
+	}
+	@Test
+	public void setNom() {
+		figura.setNom("cuadrado");
+		assertEquals("cuadrado", figura.getNom());
+	}
+	@Test
+	public void getArea() {
+		area = calcular.getArea();
+		assertEquals(0.0, calcular.getArea());
+	}
+	@Test
+	public void setArea() {
+		calcular.setArea(0.0);
+		assertEquals(0.0, calcular.getArea());
+	}
+	@AfterAll
+	public static void testToString() {
+        String esperado = "Geometria [id=1, nom=cuadrado, area=0.0]";
+        assertEquals(esperado, calcular.toString());
+	}
 	
-	/*@Test
-	public void testSetArea() {
-	
-		double resultado = calcular.setArea(20);
-		
-	}*/
 }
